@@ -26,7 +26,7 @@ pip install pycryptodo    # AES kütüphanesi
 
 ## Renkler 
 ```sh
-pip install 
+pip install colorama
 form colorama import Fore,Style
 ```
 ---
