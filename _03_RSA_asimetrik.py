@@ -14,6 +14,21 @@
 # 8 bit= 1 Bayt
 
 """
+AES,DES şifreleme algoritmalarında kulllanılır:
+Şifrelemede öncesinde PAD
+Şifre çözümlemede UNPAD
+
+pad, unpad bu fonksiyonlar AES,DES blok şifrelemede algoritmalarında
+veriyi istediğimizi formda kullanmak için bu fonksiyonunu çağırız.
+
+1-pad: Doldurma: veriyi belirli bir blok boyutuna tamamlamak içindir
+Sabit blok şifrelme algoritmalarıya çalışırız örneğin: 16 byte Eüer veriyi tam blok haline getirmezseni şifreleme çalışmaz.
+
+2-unpad: Kaldırma: şifrelenmiş verinin tamamına ulaşana kadar bırakılan paddingı kaldırır.
+pad tarafından eklenen fazlalıkları kaldırarak veriyi original haline getirmek
+"""
+
+"""
 RSA (Rivest Shamir Adleman) Asimetrik:
 1977 yılında geliştirilmiştir
 İki farklı anahtar (public,private) kullanılır.
@@ -32,7 +47,6 @@ private key: Veriyi çözmek için gereken anahtar
 ########################################################################
 from Crypto.PublicKey import RSA         # RSA şifreleme kütüphanesi
 from Crypto.Cipher import PKCS1_OAEP    #
-
 # import os # Rastgelere anahtar üretmek için kullanılan kütüphanesi
 from colorama import Fore, Style # Renkli çıktı için
 
@@ -60,7 +74,7 @@ print(f"{YELLOW}Genel Anahtar (RSA): ", public_key.decode()+"\n\n")
 print(f"{RED}Özel Anahtar (RSA): ", private_key.decode()+"\n\n")
 
 
-# Şifrelencek veriyi tamamladık (Örnek: e-posta adresi)
+# Şifrelenecek veriyi tamamladık (Örnek: e-posta adresi)
 data = "hamitmizrak@gmail.com:1234567".encode() # string veriyi byte formanıta çevir
 
 #
