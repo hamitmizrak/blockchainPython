@@ -18,10 +18,27 @@ Veri şifreleme
 WPA2,WPA3
 VPN
 """
-################################
+
+
+########################################################################
 from Crypto.Cipher import AES    # AES şifreleme kütüphanesi
 from Crypto.Util.Padding import pad,unpad # Veri bloklarını tamamlama ve kaldırma fonksiyonu
 import os # Rastgelere anahtar üretmek için kullanılan kütüphanes
+
+from colorama import Fore, Style
+
+########################################################################
+# Renkler için kısayollar
+RED= Fore.RED
+GREEN= Fore.GREEN
+YELLOW= Fore.YELLOW
+BLUE= Fore.BLUE
+MAGENTA= Fore.MAGENTA
+CYAN= Fore.CYAN
+WHITE= Fore.WHITE
+RESET=Style.RESET_ALL # Renk sıfırlamak
+
+########################################################################
 
 #  8 bit = 1 byte
 # AES için 256-bit(32 byte) uzunluğunda rastgele bir anahtar oluştur
@@ -41,8 +58,9 @@ cipher = AES.new(key, AES.MODE_CBC,iv) # AES nesnesini oluştur (CBC modu ve IV)
 ciphertext= cipher.encrypt(pad(data, AES.block_size))
 
 # Şifrelenmiş verileri hexadecimal formatında ekrana yazdırıyoruz.
-print("İlk Veri Veri AES: ", data)
-print("Şifrelenmiş Veri AES: ", ciphertext.hex())
+print(f"{CYAN}AES:İlk Veri şifrelenmeden önce): {RESET} {data.decode()}  ", data)
+# print(f"{BLUE}Şifrelenmiş Veri (AES, CBC Modu): {RESET}{ciphertext.hex()} ")
+print(f"{BLUE}Şifrelenmiş Veri (AES, CBC Modu): {RESET} ", ciphertext.hex())
 
 # AES şifre çözme (CBC Modu)
 # AES şifre çözme işlemi için aynı anahtar ve IV ile yeni bir AES nesnesi oluşturuyoruz.
@@ -52,4 +70,4 @@ decipher = AES.new(key, AES.MODE_CBC, iv)
 decipher_data= unpad(decipher.decrypt(ciphertext), AES.block_size)
 
 # Şifre çözülmüş verileri ekrana yazdırıyoruz.
-print("Çözülmüş ilk veri: (AES):", decipher_data.decode())
+print(f"{RED}Çözülmüş ilk veri: (AES): {RESET} ", decipher_data.decode())

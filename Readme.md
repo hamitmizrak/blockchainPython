@@ -24,6 +24,14 @@ pip install pycryptodo    # AES kütüphanesi
 ---
 
 
+## Renkler 
+```sh
+pip install 
+form colorama import Fore,Style
+```
+---
+
+
 ## AES 
 ```sh
 AES, simetrik anahtarlı blok şifreleme algoritmasıdır.
