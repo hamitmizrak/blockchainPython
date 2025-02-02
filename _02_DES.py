@@ -41,11 +41,11 @@ WHITE= Fore.WHITE
 RESET=Style.RESET_ALL # Renk sıfırlamak
 
 ########################################################################
-
-
 #  8 bit = 1 byte
 # DES için 8 byte(8*8=64 bit) anahtar uzunluğunda
-key = b"8bytkey1" # 8 bayt uzunluğunda bir anahtar
+# key = os.urandom(8) # 256-bit DES anahtarı güvenli ve rastgele için (2.YOL)
+key = b"8bytkey1" # 8 bayt uzunluğunda bir anahtar (1.YOL)
+
 
 # DES için  8 byte olarak rastgele bir değer oluştur
 iv= os.urandom(8)   # DES için Initialization Vector
