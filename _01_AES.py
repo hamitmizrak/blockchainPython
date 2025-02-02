@@ -5,6 +5,10 @@
 # pip uninstall pycryptodo
 # pip install pycryptodo --no-cache-dir
 
+# 1. AES (Advanced Encryption Standard) - Simetrik Şifreleme
+# AES için Python'da pycryptodome kütüphanesini kullanabiliriz.
+# AES, 128-bit blok boyutunda çalışır ve CBC (Cipher Block Chaining) gibi modlarla güvenliği artırabiliriz.
+
 # 8bit=1Bayt
 
 """
@@ -19,13 +23,11 @@ WPA2,WPA3
 VPN
 """
 
-
 ########################################################################
 from Crypto.Cipher import AES    # AES şifreleme kütüphanesi
 from Crypto.Util.Padding import pad,unpad # Veri bloklarını tamamlama ve kaldırma fonksiyonu
-import os # Rastgelere anahtar üretmek için kullanılan kütüphanes
-
-from colorama import Fore, Style
+import os # Rastgelere anahtar üretmek için kullanılan kütüphanesi
+from colorama import Fore, Style # Renkli çıktı için
 
 ########################################################################
 # Renkler için kısayollar
@@ -39,7 +41,6 @@ WHITE= Fore.WHITE
 RESET=Style.RESET_ALL # Renk sıfırlamak
 
 ########################################################################
-
 #  8 bit = 1 byte
 # AES için 256-bit(32 byte) uzunluğunda rastgele bir anahtar oluştur
 key = os.urandom(32) # 256-bit AES anahtarı güvenli ve rastgele için
