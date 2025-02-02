@@ -6,6 +6,10 @@
 # pip uninstall pycryptodo
 # pip install pycryptodo --no-cache-dir
 
+# BC (Cipher Block Chaining)
+# Simetrik: Aynı anahtar hem şifreleme hemde çözme işlemleri için kullanılır.
+# Asimetrik: İki farklı anahtar kullanılır(public,private)
+
 # 1. AES (Advanced Encryption Standard) - Simetrik Şifreleme
 # AES için Python'da pycryptodome kütüphanesini kullanabiliriz.
 # AES, 128-bit blok boyutunda çalışır ve CBC (Cipher Block Chaining) gibi modlarla güvenliği artırabiliriz.
@@ -13,6 +17,23 @@
 # 8bit=1Bayt
 
 """
+AES,DES şifreleme algoritmalarında kulllanılır:
+Şifrelemede öncesinde PAD
+Şifre çözümlemede UNPAD
+
+pad, unpad bu fonksiyonlar AES,DES blok şifrelemede algoritmalarında
+veriyi istediğimizi formda kullanmak için bu fonksiyonunu çağırız.
+
+1-pad: Doldurma: veriyi belirli bir blok boyutuna tamamlamak içindir
+Sabit blok şifrelme algoritmalarıya çalışırız örneğin: 16 byte Eüer veriyi tam blok haline getirmezseni şifreleme çalışmaz.
+
+2-unpad: Kaldırma: şifrelenmiş verinin tamamına ulaşana kadar bırakılan paddingı kaldırır.
+pad tarafından eklenen fazlalıkları kaldırarak veriyi original haline getirmek
+"""
+
+
+"""
+AES: Simetrik
 AES, simetrik anahtarlı blok şifreleme algoritmasıdır.
 2001 yılında NIST (National Instute of Standards and Technology)
 Rijndael algorithm dayanır
