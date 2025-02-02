@@ -7,12 +7,14 @@
 # pip install pycryptodo --no-cache-dir
 
 # BC (Cipher Block Chaining)
+# Simetrik: Aynı anahtar hem şifreleme hemde çözme işlemleri için kullanılır.
+# Asimetrik: İki farklı anahtar kullanılır(public,private)
 
 # 2. DES (Data Encryption Standard) - Simetrik Şifreleme
-# 8bit=1Bayt
+# 8 bit = 1 Bayt
 
 """
-DES:
+DES: Simetrik
 IBM tarafından 1977 NIST NIST (National Instute of Standards and Technology)
 Simetrik blok şifreleme
 Günümüzde güvenlik açısından çokta tercih edilmiyor.
