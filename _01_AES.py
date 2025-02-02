@@ -1,5 +1,6 @@
 # pip --version
 # pip install pycryptodo    # AES kütüphanesi
+# pip install colorama      # Color
 
 # Eğer paket yüklenmezse
 # pip uninstall pycryptodo
@@ -17,7 +18,7 @@ AES, simetrik anahtarlı blok şifreleme algoritmasıdır.
 Rijndael algorithm dayanır
 128-bit, 192-bit, 256-bit
 Günümüz şarlarında DES'e göre daha güvenlidir.
-Yükse Hız verimliliği, güçlü, brute force dayanaıklıdır.
+Yüksek Hız verimliliği, güçlü, brute force saldırılarına dayanıklıdır.
 Veri şifreleme
 WPA2,WPA3
 VPN
