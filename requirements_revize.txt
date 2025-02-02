@@ -1,0 +1,29 @@
+#  requirements.txt Dosyasını Yükleme ve Kullanma
+#  pip install -r requirements.txt
+
+# Mevcut Bağımlılıkları Kaydetme: Eğer proje ortamınızda zaten yüklenmiş bağımlılıklar varsa, pip freeze ile bunları kaydedebilirsiniz:
+# pip freeze > requirements.txt
+
+# Bağımlılık Yönetimi:
+# Sanal bir ortam (venv) kullanarak bağımlılıkların sistem genelinden izole olmasını sağlayın.
+# python -m venv myenv
+# source myenv/bin/activate
+
+############################################################################################################
+# 1. Temel Geliştirme ve Yardımcı Kütüphaneler
+# Bu kütüphaneler, Python ile genel geliştirme işlerinde yaygın olarak kullanılır:contourpy==1.3.1
+cycler==0.12.1
+fonttools==4.55.3
+kiwisolver==1.4.8
+matplotlib==3.10.0
+numpy==2.2.1
+packaging==24.2
+pandas==2.2.3
+pillow==11.1.0
+pyparsing==3.2.1
+python-dateutil==2.9.0.post0
+pytz==2024.2
+scipy==1.15.1
+seaborn==0.11.2
+six==1.17.0
+tzdata==2024.2

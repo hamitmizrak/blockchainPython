@@ -1,0 +1,265 @@
+
+
+ Django Proje Yapısı Nedir?
+
+Django’da temel olarak bir proje (project) ve bu projenin içinde bir veya birden fazla uygulama (app) bulunur. Proje; genel yapılandırma (settings), yönlendirme (urls) ve sunucu ayarlarını barındıran en üst düzey klasördür. Her bir uygulama (app) ise bir işlevsel özelliğe veya mantıksal bir modüle odaklanır. Örneğin, “blog”, “e-ticaret”, “kullanıcı yönetimi” gibi farklı uygulamalar tek bir proje altında çalışabilir.
+
+ Neden Proje / Uygulama Ayrımı?
+
+- Modülerlik: Her bir uygulamanın (app) kendi dosya ve klasör yapısı olduğundan, büyük projeleri düzenlemek kolaylaşır.
+- Yeniden Kullanılabilirlik: Bir uygulamayı başka projelere rahatlıkla taşıyabilirsiniz.
+- Bakım Kolaylığı: Hangi kodun nerede olduğu daha net görülür ve ekibin ortak çalışması kolaylaşır.
+
+---
+
+ Django Proje Yapısı Klasör ve Dosyaları
+
+Bir Django projesi oluşturduğunuzda, tipik olarak aşağıdaki gibi bir yapı ile karşılaşırsınız:
+
+```plaintext
+myproject/
+│
+├── manage.py
+├── myproject/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+│
+└── myapp/
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations/
+    ├── models.py
+    ├── tests.py
+    └── views.py
+```
+
+Şimdi bu dosya ve klasörlerin ne işe yaradıklarını detaylıca inceleyelim.
+
+---
+
+ 1. manage.py
+
+- Django projesiyle ilgili yönetim komutlarını (örneğin, sunucuyu çalıştırma, veritabanı migrasyonu oluşturma, süper kullanıcı oluşturma vb.) çalıştırdığımız komut satırı aracıdır.
+- Proje kök dizininde bulunur.
+- Typik kullanım örnekleri:
+  ```bash
+  python manage.py runserver      Yerel sunucuyu başlatma
+  python manage.py makemigrations
+  python manage.py migrate
+  python manage.py createsuperuser
+  ```
+- Önemli Not: Django’nun dahili komutlarını `manage.py` üzerinden çalıştırmak genellikle en iyi uygulamadır. Çünkü `manage.py`, `DJANGO_SETTINGS_MODULE` gibi ortam değişkenlerini proje yapısına uygun şekilde otomatik ayarlar.
+
+---
+
+ 2. Projenin Ana Klasörü (Örn: `myproject/`)
+
+Django projesi oluşturulduğunda, proje ismi ile aynı ada sahip bir klasör daha oluşur (örneğin `myproject/`). Bu klasörün içinde Django’nun çekirdek dosyaları bulunur:
+
+1. `__init__.py`
+   - Python’a bu klasörün bir Python paketi olduğunu bildirir.
+   - Genelde bu dosya boştur veya özel paket başlatma kodlarını içerir.
+
+2. `asgi.py`
+   - ASGI (Asynchronous Server Gateway Interface) ayarlarını tutar.
+   - Django’nun asenkron desteği için kullanılır.
+   - Üretim (production) ortamında asenkron sunucularla (örn. Uvicorn, Daphne) çalışılacaksa buradaki yapılandırma önemlidir.
+
+3. `wsgi.py`
+   - WSGI (Web Server Gateway Interface) ayarlarını tutar.
+   - Django uygulamasını, web sunucusu (ör. Gunicorn, uWSGI) ile iletişim halinde çalıştırmak için kullanılır.
+   - Geleneksel, senkron tabanlı Django projelerinde standart giriş noktası olarak kabul edilir.
+
+4. `settings.py`
+   - Projenin tüm yapılandırma ayarlarını içerir.
+   - Veritabanı ayarları, Installed Apps (kurulu uygulamalar listesi), middleware’ler, şablon (template) ayarları, statik dosya yolları gibi birçok parametreyi burada yönetirsiniz.
+   - Önemli parametreler:
+     - SECRET_KEY: Projenin güvenliği için kritik bir parametre. Rastgele, gizli bir dize.
+     - DEBUG: Geliştirme sürecinde `True`, canlı ortamda `False` ayarlanır.
+     - ALLOWED_HOSTS: Projenin hangi domain’lerden gelen isteklere cevap vereceğini belirtir.
+
+5. `urls.py`
+   - Projeye gelen isteklerin (URL’lerin) hangi uygulamaya veya hangi view fonksiyonuna yönlendirileceğini belirler.
+   - Genellikle proje düzeyinde çekirdek yönlendirmeler tanımlanır ve uygulamalara ait `urls.py` dosyaları buraya “include” edilir.
+   - Örnek bir `urls.py` kullanımı:
+     ```python
+     from django.contrib import admin
+     from django.urls import path, include
+
+     urlpatterns = [
+         path('admin/', admin.site.urls),
+         path('blog/', include('blog.urls')),
+     ]
+     ```
+
+---
+
+ 3. Uygulama (App) Klasörü (Örn: `myapp/`)
+
+Bir Django projesi içinde farklı fonksiyonellikleri birbirinden ayırmak için “uygulamalar” oluşturulur. Örneğin, bir blog uygulaması (`blog`), bir e-ticaret uygulaması (`shop`), kullanıcı yönetimi uygulaması (`accounts`) gibi. Her uygulama içinde benzer dosyalar bulunur:
+
+1. `__init__.py`
+   - Bu klasörün bir Python paketi olduğunu bildirir.
+
+2. `admin.py`
+   - Admin paneline uygulamaya ait modelleri (Model) kaydetmek için kullanılır.
+   - Örnek:
+     ```python
+     from django.contrib import admin
+     from .models import Post
+
+     admin.site.register(Post)
+     ```
+
+3. `apps.py`
+   - Uygulama ile ilgili yapılandırma ayarlarını içerir.
+   - Django 1.9 ve üzeri versiyonlarda uygulamaların tanımlanması için kullanılır.
+   - `INSTALLED_APPS` listesine uygulamayı eklerken bu dosyadaki sınıfa başvurabilirsiniz.
+
+4. `models.py`
+   - Veritabanında tutacağınız verilerin sınıflar (model) şeklinde tanımlandığı yerdir.
+   - Django’nun ORM yapısı sayesinde bu modeller, otomatik olarak veritabanı tablolarına dönüşür.
+   - Örnek:
+     ```python
+     from django.db import models
+
+     class Post(models.Model):
+         title = models.CharField(max_length=100)
+         content = models.TextField()
+         created_at = models.DateTimeField(auto_now_add=True)
+
+         def __str__(self):
+             return self.title
+     ```
+
+5. `migrations/` Klasörü
+   - Django, model değişikliklerini takip edip veritabanına uygulayabilmek için “migrasyon” dosyaları oluşturur.
+   - Her değişiklikte `makemigrations` komutu ile bu klasörde yeni migrasyon dosyaları üretilir. Sonra `migrate` komutu ile veritabanı güncellenir.
+
+6. `tests.py`
+   - Django, test yazmayı teşvik eder. Burada birim testlerinizi (unit tests) veya bütünleşik testlerinizi (integration tests) yazabilirsiniz.
+   - `python manage.py test` komutu çalıştırıldığında bu dosyadaki test fonksiyonları otomatik olarak çalışır.
+
+7. `views.py`
+   - Uygulamanın iş mantığı bu dosyada yer alır.
+   - Bir URL isteği geldiğinde hangi işlemler yapılacağını, hangi verilerin çekileceğini ve hangi şablonun döndürüleceğini `views.py` tanımlar.
+   - Örnek fonksiyon tabanlı bir view:
+     ```python
+     from django.shortcuts import render
+
+     def post_list(request):
+          Veritabanından postları çek
+          Bir template'e gönder
+         return render(request, 'post_list.html', {})
+     ```
+   - Sınıf tabanlı view’lar (Class-Based Views) da yine burada veya alt dosyalarda tanımlanabilir.
+
+---
+
+ Projede Sık Kullanılan Diğer Dizaynlar
+
+1. Templates (Şablonlar) Klasörü
+   - Django’nun varsayılan olarak template dosyalarını nerede arayacağı, `settings.py` içindeki `TEMPLATES` ayarıyla belirlenir.
+   - Genelde her uygulamanın içinde `templates/` klasörü oluşturulur veya proje genelinde ortak bir `templates/` klasörü tanımlanır.
+
+2. Static (Statik Dosyalar) Klasörü
+   - CSS, JavaScript, resimler gibi statik içerikler `STATICFILES_DIRS` veya uygulama bazında `static/` klasörlerinde tutulur.
+   - Canlı ortamda (production) bu dosyaları sunmak için ek ayarlar yapmak gerekebilir (`collectstatic` komutu).
+
+3. Media (Kullanıcı Yüklemeleri) Klasörü
+   - Kullanıcıların yüklediği dosyaların (örn. profil resmi) tutulduğu klasördür.
+   - `MEDIA_URL` ve `MEDIA_ROOT` ayarlarıyla yönetilir.
+
+4. Environment (Ortam) Dosyası
+   - Projeye özel gizli anahtarlar, veritabanı şifreleri gibi bilgileri yönetmek için bazen `.env` dosyası kullanılır.
+   - `python-decouple` veya benzeri kütüphaneler yardımıyla bu değerler `settings.py` içine aktarılır.
+
+---
+
+ Örnek Genişletilmiş Proje Yapısı
+
+Gelişmiş veya profesyonel projelerde klasör yapısı şu şekilde daha da genişleyebilir:
+
+```plaintext
+myproject/
+│
+├── manage.py
+├── requirements.txt       Projede kullanılan Python paketlerinin listesi
+├── .env                   Ortam değişkenleri (gizli kalması önemli)
+├── myproject/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py        Ortam bazlı ayarlar (development / production) için farklı dosyalar olabilir
+│   ├── urls.py
+│   └── wsgi.py
+│
+├── myapp/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   ├── models.py
+│   ├── tests.py
+│   ├── views.py
+│   ├── templates/
+│   │   └── myapp/
+│   │       └── index.html
+│   └── static/
+│       └── myapp/
+│           ├── css/
+│           └── js/
+│
+├── templates/             Proje genelinde ortak kullanılabilecek şablonlar
+│   └── base.html
+│
+└── static/                Proje genelinde ortak kullanılan statik dosyalar
+    ├── css/
+    └── js/
+```
+
+- `requirements.txt`: Pip ile kurduğunuz tüm paketlerin sürüm bilgilerini tutar.
+- `.env`: Kesinlikle versiyon kontrolüne (Git vb.) dahil edilmemesi gereken gizli veriler.
+- `templates/` ve `static/` klasörleri proje genelinde ortak kullanım için oluşturulabilir.
+
+---
+
+ En İyi Uygulamalar ve Öneriler
+
+1. Sade ve Düzenli Tutun
+   Mümkün olduğunca uygulamaları (app) mantıksal parçalara bölün. Çok büyük tek bir uygulama yerine, işlevsel açıdan farklı alanları ayrı uygulamalarda tutmak projeyi ölçeklenebilir kılar.
+
+2. Tek Sorumluluk Prensibi
+   Bir uygulama tek bir görevi üstlensin. Örneğin, sadece “blog” ile ilgili dosyaları içeren bir app, sadece “kullanıcı yönetimi” ile ilgili bir app olsun.
+
+3. Ayırma (Separation) ve Modülerlik
+   Template’leri, statik dosyaları uygulamalara göre veya proje geneline göre düzenleyin. Çok karmaşık projelerde her uygulamanın kendi `templates` ve `static` klasörü olabilir.
+
+4. Konfigürasyon Yönetimi
+   - Geliştirme ve üretim (production) ortamı ayarlarını (`DEBUG`, `DATABASES`, `EMAIL_SETTINGS`) ayırın.
+   - API anahtarları, şifreler vb. gizli bilgileri `.env` dosyalarında saklayın ve asla Git’e yüklemeyin.
+
+5. Dokümantasyon
+   - Her uygulamada kısa da olsa bir “Ne işe yarar?” açıklaması bulundurun.
+   - `README.md` dosyası yazarak projeye nasıl başlanacağı, nasıl çalıştırılacağı, hangi ayarların yapılacağı gibi bilgileri açıklayın.
+
+6. Sürüm Kontrolü
+   - Projenizi mutlaka bir sürüm kontrol sistemi (örn. Git) ile yönetin.
+   - `.gitignore` dosyanızda `__pycache__`, `.env` gibi istenmeyen dosyaları hariç tutun.
+
+---
+
+ Özet
+
+- Django proje yapısı, proje ve uygulamaları (apps) içeren mantıksal bir organizasyondur.
+- Proje düzeyinde; `settings.py`, `urls.py`, `wsgi.py`, `asgi.py` gibi genel ayarlar ve sunucu yapılandırma dosyaları bulunur.
+- Uygulama düzeyinde; `models.py`, `views.py`, `admin.py`, `migrations` gibi fonksiyonel dosyalar yer alır.
+- Templates, static, media gibi ek klasörler projeyi ölçeklendirdikçe ortaya çıkar ve organize edilir.
+- Bu yapı, Django’nun “tekdüzelik” anlayışı ile gelen standart bir yapıdır; ekip çalışmasını kolaylaştırır ve hızlıca üretim yapmanızı sağlar.
+
+---
+
+Buraya kadar Django Proje Yapısı hakkında çok detaylı bilgiler verdim. Daha fazla detaylandırmamı istediğiniz belirli bir konu varsa veya “devam edeyim mi?” diyebileceğim başka alt başlıklar (örneğin, `settings.py` içinde ortama göre konfigürasyon yönetimi, `urls.py` ile include yapısı, admin panel özelleştirmeleri vb.) varsa lütfen belirtin. Aksi takdirde bir sonraki konuya geçebiliriz.
