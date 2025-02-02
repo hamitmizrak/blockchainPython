@@ -32,6 +32,17 @@ form colorama import Fore,Style
 ---
 
 
+
+## Blockhain
+```sh
+pip freeze > requirements.txt
+pip install -r requirements.txt
+```
+---
+
+
+
+
 ## AES 
 ```sh
 AES, simetrik anahtarlı blok şifreleme algoritmasıdır.
@@ -282,11 +293,6 @@ print("Çözülmüş Veri:", decrypted.decode())
 ---
 
 
-## Blockhain
-```sh
-
-```
----
 
 
 ## Blockhain
