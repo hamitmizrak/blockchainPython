@@ -121,21 +121,29 @@ for i in range(10):
 
 
 #####################################################################################
+#####################################################################################
+# &=     | Bit düzeyinde VE ve Ata      | x &= 3
+# |=     | Bit düzeyinde VEYA ve Ata    | x |= 3
+# ^=     | Bit düzeyinde XOR ve Ata     | x ^= 3
+# >>=    | Bit kaydırma sağa ve Ata     | x >>= 3
+# <<=    | Bit kaydırma sola ve Ata     | x <<= 3
+
+#####################################################################################
 #### Sayısal İşlemler Dört İşlem ####################################################
 a=15
 b=4
 print("Toplama= ",a+b)
 print("Çıkarma= ",a-b)
-print("Çarpma= ",a*b)
-print("Virgüllü Bölme= ",a/b)
-print("Tam Sayıya Bölme= ",a//b)
-print("Module Bölme= ",a%b)
-print("Üslü Sayılar= ",a**b)
-
+print("Çarpma= ",(a*b))
+print("Virgüllü Bölme= ",(a/b))
+print("Tam Sayıya Bölme= ",(a//b))
+print("Module Bölme= ",(a%b))
+print("Üslü Sayılar= ",(a**b))
 
 #####################################################################################
 #### Sayısal İşlemler Mantıksal İşlem ###############################################
-print("Eşit mi ",a==b)
+print("Sayısal İşlemler")
+print("Eşit mi ",(a==b))
 print("Eşit Değil mi ",a!=b)
 print("Büyük mü ",a>b)
 print("Büyük mü, Eşit mi ",a>=b)
@@ -157,90 +165,3 @@ print("Topla ve Ata: ",data)
 data-=10
 print("Çıkar ve Ata: ",data)
 
-# &=     | Bit düzeyinde VE ve Ata      | x &= 3          |
-# |=     | Bit düzeyinde VEYA ve Ata    | x |= 3          |
-# ^=     | Bit düzeyinde XOR ve Ata     | x ^= 3          |
-# >>=    | Bit kaydırma sağa ve Ata     | x >>= 3         |
-# <<=    | Bit kaydırma sola ve Ata     | x <<= 3         |
-
-
-#####################################################################################
-#### print ##########################################################################
-# Kelime yazdırmak
-print("Merhabalar, Nasılsınız")
-
-# Sayı yazdırmak
-print(44)
-
-
-
-#####################################################################################
-#### değişken #######################################################################
-# a) Tek Değişken Atama
-x = 5
-print(x)
-
-#  b) Birden Fazla Değişken Atama
-x, y, z = 1, 2, 3   # x=1, y=2, z=3
-print(x, y, z)
-
-# c) Aynı değeri birden fazla değişkene atayabilirsiniz.
-a = b = c = 0   # a=0, b=0, c=0
-print(a, b, c)
-
-# d) Değişkenlerin Değerlerini Değiştirme
-x, y = 5, 10
-print(x,y)
-x, y = y, x
-print(x,y)
-
-#####################################################################################
-#### formatter ######################################################################
-# Formatter
-name="Hamit"
-surname="Mızrak"
-school="Firat University"
-# f-string
-print(f"formatter: Benim adım:{name} Soyadım:{surname} okulum:{school}")
-
-
-#####################################################################################
-#### None ###########################################################################
-# None: Python'da None özel bir veri türüdür ve boş veya tanımsız bir değeri ifade eder.
-data = None    #Tanımsız veya boş değeri temsil eder
-print("boş değer: ", data)
-
-# - is None: None'un aynı nesne olup olmadığını kontrol eder.
-# - == None: None'a eşit olup olmadığını kontrol eder.
-
-"""
-x = None
-
- Doğru kullanım
-if x is None:
-    print("x gerçekten None")
-
- Yanlış olmasa da önerilmeyen kullanım
-if x == None:
-    print("x None'a eşit")
-
-"""
-
-
-######################################################################################
-#### const ###########################################################################
-# Python’da sabitleri korumak için özel bir dil özelliği yoktur,
-# ancak büyük harflerle yazmak, sabitin değiştirilmemesi gerektiğini belirten bir konvansiyondur.
-PI = 3.14159
-print(PI)
-
-MAX_CONNECTIONS = 100
-print(MAX_CONNECTIONS)
-
-
-#####################################################################################
-#### Type Convesition ###############################################################
-sayi1= input("1.sayıyı giriniz\n")
-sayi2= input('2.sayıyı giriniz\n')
-toplam=int(sayi1)+int(sayi2); # int(), float(), str(),
-print("toplam sonuc",toplam)
