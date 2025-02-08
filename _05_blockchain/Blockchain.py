@@ -3,7 +3,7 @@ from typing import List  # List type
 import time  # Blok zaman damgası için kullandım
 import json  # Blok verilerini JSON formatında saklamak istersek
 import hashlib  # Hash fonksiyonlarını kullanmak içindir.
-
+from colorama import Fore, Style # Terminalde renkli çıktı almak için
 
 ################################
 # Fonksiyonlar
@@ -97,7 +97,7 @@ class Blockchain:
         Yeni bir blok madenciliğini yaparak blockchain'e ekler.
         """
         if not self.pending_transactions:
-            print("İşlem kuyruğu boştur, madencilik için yapılacak işlem yoktur")
+            print(Fore.RED+"İşlem kuyruğu boştur, madencilik için yapılacak işlem yoktur", Style.RESET_ALL)
             return  None
 
         # Zincirin en son bloğunu al
@@ -116,7 +116,7 @@ class Blockchain:
         while not new_block.hash.startswith("0" * self.difficulty):
             new_block.nonce += 1
             new_block.hash = new_block.calculate_hash()
-        print(f"Yeni blok madenciliğini tamamlandı: {new_block.hash}")
+        print(Fore.GREEN+ f"Yeni blok madenciliğini tamamlandı: {new_block.hash}", Style.RESET_ALL)
         # YEni bloğu blockchain'e ekle
         self.chain.append(new_block)
 
@@ -144,7 +144,7 @@ class Blockchain:
     # Blockchain'i ekrana yazdırmak
     def print_chain(self):
         for block in self.chain:
-            print(f"Timestamp: {block.timestamp} \t- Block:{block.index} \t- Hash:{block.hash} \t- Önceki Hash: {block.previous_hash} \t- Transactions: {block.transactions} ")
+            print(Fore.CYAN+f"Timestamp: {block.timestamp} \t- Block:{block.index} \t- Hash:{block.hash} \t- Önceki Hash: {block.previous_hash} \t- Transactions: {block.transactions} ", Style.RESET_ALL)
             # print(f"Blok:", block.index)
             # print("Timestamp:", block.timestamp)
             # print("Previous Hash:", block.previous_hash)
@@ -152,6 +152,25 @@ class Blockchain:
             # print("Transactions:", block.transactions)
             # print("\n")
 
-
 # Blockchain üretimi
+test_chain = Blockchain()
+
+# Hamit'ten Mehmet'e 10 birim gönderme ekle
+test_chain.add_transaction("Hamit","Mehmet",10)
+
+# Ahmet'ten Mustafa'ya 15 birim gönderme ekle
+test_chain.add_transaction("Ahmet","Mustafa",15)
+
+# İşlemleri içeren yeni bir blok madenciliğini yap ve ekle
+test_chain.mine_block()
+
+# Fatih'ten Sultan'a 10 birim gönderme ekle
+test_chain.add_transaction("Fatih","Sultan",6)
+test_chain.mine_block()
+
+# Blockchainleri ekrana yazdır
+test_chain.print_chain()
+
+# Blockchain bütünlük doğrulaması
+print(Fore.YELLOW+"Blokchain geçerli mi? ",test_chain.is_chain_valid(), Style.RESET_ALL)
 
