@@ -62,8 +62,6 @@ processor_with_db.process_and_save("Python Dependency Injection")
 # Çıktı: Veritabanına kaydedildi: İşlenmiş: Python Dependency Injection
 
 
-
-
 # Açıklamalar
 
 # Soyutlama (Abstraction):

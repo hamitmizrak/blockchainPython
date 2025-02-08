@@ -10,7 +10,7 @@
 # super().__init__() ifadesi, üst sınıfın yapıcı metodunu çağırır.
 # Alt Sınıflar Yeni Özellikler Ekler:
 
-# Alt sınıflar, üst sınıfın özelliklerini genişleterek (örneğin, vites_tipi ve batarya_kapasitesi) özel özellikler ekleyebilir.
+# Alt sınıflar, üst sınıfın özelliklerini genişleterek (örneğin, vites_tipi ve batarya_kapasitesi) özel özellikler ekleyebilir. 
 # Kodun Yeniden Kullanılabilirliği:
 # Aynı temel özelliklere sahip sınıflar türetmek için kod tekrarını önler.
 

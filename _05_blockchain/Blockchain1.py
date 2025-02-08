@@ -3,7 +3,6 @@ import json  # Blok verilerini JSON formatında saklamak için
 import time  # Blok zaman damgası için
 from typing import List  # Tip belirtimi için
 
-
 class Block:
     """
     Blockchain içindeki her bir bloğu temsil eden sınıf.
