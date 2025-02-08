@@ -1,5 +1,11 @@
 # pylint: disable=C0114
 """  """
+# Data types
+
+# camelCase
+# PascalCase
+# snake_case
+# kebap_case
 
 # Dynamics Types
 # Değişken isimlendirme: Sayı ile başlama

@@ -3,7 +3,6 @@
 import math
 from random import randint, uniform
 
-
 #####################################################################################
 #### Sabit Sayılar  #################################################################
 print("PI: " ,math.pi)
@@ -16,7 +15,6 @@ print("üslü: ",math.pow(2,5))
 print("faktöriyel: ",math.factorial(4))
 print("Ceil Yukarı Yuvarlamak: ",math.ceil(4.3))
 print("Floor Aşağı Yuvarlamak: ",math.floor(4.3))
-
 
 
 ######################################################################################

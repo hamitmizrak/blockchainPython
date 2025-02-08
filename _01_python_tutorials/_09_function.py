@@ -13,8 +13,8 @@ def hesap_topla1():
 
 # Function Çağır
 hesap_topla1()
-#################################################################################
 
+#################################################################################
 # 2-) Parametreli Returnsuz Function
 def hesap_topla2(sayi1,sayi2):
     """ docstring
@@ -25,8 +25,8 @@ def hesap_topla2(sayi1,sayi2):
 
 # Function Çağır
 hesap_topla2(10,20)
-#################################################################################
 
+#################################################################################
 # 3-) Default Değerli Parametreli Returnsuz Function
 def hesap_topla3(sayi1,sayi2=20):
     """ docstring
@@ -38,7 +38,6 @@ def hesap_topla3(sayi1,sayi2=20):
 # Function Çağır
 # hesap_topla3(10)
 hesap_topla3(10,20)
-
 
 #################################################################################
 # 4-) Parametresiz Returnlu Function
@@ -67,7 +66,6 @@ def hesap_topla5(sayi1,sayi2=20):
 # Function Çağır
 result5=hesap_topla5(10)
 print(result5)
-
 
 #################################################################################
 # 6-) Parametreli Function
