@@ -124,4 +124,34 @@ class Blockchain:
         self.pending_transactions=[]
 
     # Blockchain için veri bütünlüğünü doğrulansın
-    #def is_chain_valid(self):
+    def is_chain_valid(self):
+        """Blockchain için veri bütünlüğünü doğrulansın"""
+        for i in range(1, len(self.chain)):
+            current_block = self.chain[i]
+            previous_block = self.chain[i - 1]
+
+            # Hash değerleri eşit değilse bloklar eşleşmedi
+            if current_block.hash != current_block.calculate_hash():
+                return False # Hash eşleşmiyorsa blockchain geçersiz.
+
+            # Önceki bloğun hash değeri yanlışsa bloklar eşleşmedi
+            if current_block.previous_hash!= previous_block.hash:
+                return False # Önceki bloğun hash değeri yanlışsa, blockchain geçersiz
+
+        # Herşey doğruysa blockchain geçerli
+        return True
+
+    # Blockchain'i ekrana yazdırmak
+    def print_chain(self):
+        for block in self.chain:
+            print(f"Timestamp: {block.timestamp} \t- Block:{block.index} \t- Hash:{block.hash} \t- Önceki Hash: {block.previous_hash} \t- Transactions: {block.transactions} ")
+            # print(f"Blok:", block.index)
+            # print("Timestamp:", block.timestamp)
+            # print("Previous Hash:", block.previous_hash)
+            # print("Hash:", block.hash)
+            # print("Transactions:", block.transactions)
+            # print("\n")
+
+
+# Blockchain üretimi
+
