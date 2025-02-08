@@ -1,8 +1,6 @@
 ##########################################################################################
 #### Data Type : Set      ################################################################
-
 # Python'da set (küme), sıralı olmayan, eşsiz (unique) öğelerden oluşan ve mutable (değiştirilebilir) bir veri yapısıdır.
-
 # Boş bir set (set() kullanılmalı, {} boş dictionary oluşturur)
 empty_set = set()
 

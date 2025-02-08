@@ -3,7 +3,7 @@ from datetime import datetime
 # Python Yıl bilgisi olarak formatter datetime modülünü kullanıyoruz.
 
 # Kullanıcıdan Veri al
-user_input = input("Tarih girin: (YYYY-MM-DD): ")
+user_input = input("Tarih giriniz: (YYYY-MM-DD): ")
 
 # Tarih Nesnesi dönüştürmek(cast)
 date_object = datetime.strptime(user_input, '%Y-%m-%d')

@@ -1,5 +1,6 @@
 from datetime import datetime
 
+#####################################################################
 # Python Yıl bilgisi olarak formatter datetime modülünü kullanıyoruz.
 # Şu anda ki zaman
 current_time = datetime.now()

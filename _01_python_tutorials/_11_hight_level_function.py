@@ -1,26 +1,47 @@
 ##########################################################################################
 #### Hight Level Function#################################################################
+# map, filter,
 from itertools import zip_longest, chain
-
 sayilar= [9,1,2,3,4,5,6]
 
+# Not =>  hight leven functionlarda genel mantıklar
+"""
+iki nokta öncesi ve sonrası vardır
+öncesinde parametreler yazılır : yapılacak işlem ve sonrasında virgül yazılır ve liste yazılır
+"""
+
+################################################################
+## Map #########################################################
+print("Map")
 # 1- map(function, iterable)
 # Bir fonksiyonu bir iterable’ın her öğesine uygular ve sonuçları yeni bir iterable olarak döndürür.
+# Sayıları 2 ile çarparak ekle
+#map_result= map(lambda x:x*2, sayilar)
 map_result= map(lambda x:x*2, sayilar)
 # print(f"{map_result}")
 print(list(map_result))
 
+###################################################################
+## Filter #########################################################
+print("Filter")
 # 2- filter(function, iterable)
 # Bir fonksiyonu bir iterable’ın öğelerine uygular ve yalnızca `True` döndürenleri filtreler.
+# sayılardan çift olanları listele
 filter_result =filter(lambda x:x%2==0, sayilar)
 print(list(filter_result))
 
+###################################################################
+## Reduce #########################################################
+print("reduce")
 # 3- reduce(function, iterable, initializer)
 # Bir fonksiyonu bir iterable’ın öğelerine soldan sağa doğru uygular ve tek bir değer döndürür.
 from functools import reduce
 reduce_result= reduce(lambda x,y:x+y, sayilar)
 print(reduce_result)
 
+###################################################################
+## Sorted #########################################################
+print("Sorted")
 # 4- sorted(iterable, key=None, reverse=False), reversed(iterable)
 # Bir iterable’ı belirli bir kritere göre sıralar ve sıralanmış bir liste döndürür.
 # Küçükten Büyüğe

@@ -19,6 +19,12 @@ string1 = "Hello World1"
 string2 = 'Hello World2'
 print(string1, "", string2)
 
+# Type: Tür Verilen data type(Veri türününü gösterir)
+print(type(string1))
+print(type(number1))
+print(type(number2))
+print(type(PI))
+
 ################################################################
 # Değişken atama tek satırda da gösterebilirsiniz
 x, y, z = 1, 2, 3
@@ -26,14 +32,6 @@ x, y, z = 1, 2, 3
 ################################################################
 # Sabitler BÜYÜK_KARAKTERLER
 DATA_CONNECTION = 255
-
-#####################################################################################
-#### type ###########################################################################
-# Type: Tür Verilen data type(Veri türününü gösterir)
-print(type(string1))
-print(type(number1))
-print(type(number2))
-print(type(PI))
 
 #####################################################################################
 #### boolean ########################################################################

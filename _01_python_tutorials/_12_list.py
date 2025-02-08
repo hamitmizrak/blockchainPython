@@ -2,7 +2,8 @@
 #### Data Type List      #################################################################
 from itertools import count
 
-# Heterojen Yapı
+# Heterojen Yapı demek birden fazla data type bir arada olması demektir.
+# Heterojen: sayı, virgüllü syı string,boolen,
 list_data=[1,2,4,3,5,6,7,0]
 
 # Heterojen Yapı
@@ -57,7 +58,7 @@ print(23 not in list_data)
 ##################
 # İç İçe Listeler (Nested Lists):
 nested_list = [[1, 2, 3], [4, 5, 6]]
-print(f"{"nested list",nested_list[0][1]}")
-print(f"{"nested list",nested_list[1][1]}")
+print(f"{nested_list[0][1]}")
+print(f"{nested_list[1][0]}")
 
 

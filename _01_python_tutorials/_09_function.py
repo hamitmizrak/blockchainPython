@@ -1,6 +1,6 @@
 ##########################################################################################
 #### Function ############################################################################
-
+# : kullanım yerleri =>  for, if, function
 # 1-) Parametresiz Returnsuz Function
 def hesap_topla1():
     """ docstring
@@ -70,7 +70,6 @@ print(result5)
 
 
 #################################################################################
-
 # 6-) Parametreli Function
 global_variable = 10  # Global değişken tanımı fonksiyon dışında yapılır
 

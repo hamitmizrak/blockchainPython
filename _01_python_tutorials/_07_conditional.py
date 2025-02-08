@@ -1,6 +1,11 @@
 #####################################################################################
 #### Conditional ####################################################################
-
+# Dikkat edilecek kurallar
+"""
+space boşluk
+tab boşluk
+: yazmak
+"""
 # Sayı Negatif Pozitif
 # if else
 number=5
@@ -9,6 +14,8 @@ if number > 0:
 else:
     print("negatif sayı")
 
+#####################################################################################
+#### Ternary ########################################################################
 # Ternary
 terna= "Pozitif sayı" if number > 0 else "Negatif sayı"
 print(terna)
@@ -23,6 +30,8 @@ elif number==3:
 else:
     print("1<=X<=5")
 
+#####################################################################################
+#### Örnekler #######################################################################
 # Sayı Negatif Çift, Tek
 if number >0:
     if number % 2 == 0:
@@ -32,7 +41,8 @@ if number >0:
 else:
     print("Sayı negatif")
 
-
+#####################################################################################
+#### pass ###########################################################################
 # pass: Koşul bloklarında geçici olarak bir işlem yapmamak için pass kullanılır.
 # Bu, daha sonra doldurulacak blokları oluştururken faydalıdır.
 # Sayı Negatif Çift, Tek

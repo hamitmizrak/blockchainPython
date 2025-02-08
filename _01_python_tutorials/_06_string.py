@@ -16,6 +16,8 @@ fazla satırdan oluşan
 bir metindir."""
 print(metinData3)
 
+#####################################################################################
+#### string #########################################################################
 print("##########################################")
 # 1-) İmmutability (Değişmezlik):
 # İmmutability (Değişmezlik): Stringler Python'da immutable (değiştirilemez) veri tipleridir.
@@ -64,29 +66,37 @@ metin72 = "Dersi"
 sonuc7 = metin71 + metin72
 print(sonuc7)  # Python Dersi
 
+#####################################################################################
+#### join #########################################################################
 # 8-) join(iterable)
 # Iterable (liste, tuple, vb.) içindeki elemanları bir stringle birleştirir.
 liste = ["Python", "join"]
 print(" ".join(liste))  # Python Dersi
 
+#####################################################################################
+#### Slicing #########################################################################
 print("##########################################")
 # 8-) Parçalama (Slicing): Stringlerin belirli bir kısmını alabilirsiniz.
 metin8 = "Python"
 print(metin8[1:4])  # yth  1<=X<4
 
 print(metin8[0:3])  # Pyt 0<=X<3
+# Sıfır yazmadan
 print(metin8[:3])   # Pyt 0<=X<3
 
 print(metin8[3:])     # hon
 # print(metin8[3:])   # hon
 
-
+#####################################################################################
+#### Formating ######################################################################
 print("##########################################")
 # 9-) String Formatlama: Dinamik değerler eklemek için format() veya f-string kullanılır.
 name9 = "Ahmet"
 surname9 = 25
 print(f"Merhaba, benim adım {name9} soyadım {surname9}")
 
+#####################################################################################
+#### Find ###########################################################################
 print("##########################################")
 # 9-) Arama ve Değiştirme:
 # Alt stringin, ana string içinde ilk geçtiği indeksini döner.
@@ -100,6 +110,8 @@ print("##########################################")
 # 10-) replace(): Belirli bir alt stringi başka bir string ile değiştirir.
 print(metin10.replace("Python", "Java"))  # Java programlama dili
 
+#####################################################################################
+#### Uppercase, Lowercase ###########################################################
 print("##########################################")
 # 11-) UPPER
 metin11 = "Python programlama dili"
@@ -120,6 +132,8 @@ print("Hepsi Küçük Harf: ", metin12.lower().islower())
 metin122 = "ß"
 print(metin122.casefold())  # ss
 
+#####################################################################################
+#### starts, ends ###################################################################
 # 12-3 endswith(suffix, start, end)
 # Stringin belirtilen bir alt string ile bitip bitmediğini kontrol eder.
 metin122 = "Merhaba Python"
@@ -128,6 +142,8 @@ print(metin122.endswith("Python"))  # True
 # 12-4 startswith(suffix, start, end)
 print(metin122.startswith("Python"))  # True
 
+#####################################################################################
+#### index ##########################################################################
 # 12-5 index(substring, start, end)
 # Alt stringin, ana string içinde ilk geçtiği indeksini döner.
 # Alt string bulunamazsa hata verir (ValueError).
@@ -147,6 +163,8 @@ print("##########################################")
 metin14 = "ilk karakter büyük olsun."
 print("title:", metin14.title())
 
+#####################################################################################
+#### strip, split ###################################################################
 print("##########################################")
 # 15-) strip:
 # Başındaki ve sonundaki boşlukları kaldırır.
@@ -166,6 +184,8 @@ print(metin162[0])
 print(metin162[1])
 print(metin162[2])
 
+#####################################################################################
+#### döngüler #######################################################################
 print("##########################################")
 # 17-) String ve Döngüler:
 # Stringler üzerinde döngü kullanarak her bir karaktere erişebilirsiniz:
@@ -179,6 +199,8 @@ print("##########################################")
 print(ord('A'))  # 65
 print(chr(65))  # A
 
+#####################################################################################
+#### id #############################################################################
 print("##########################################")
 # 19-) Stringlerin Bellekte Temsili
 # Python'da stringler bellekte immutable olduğu için her değişiklik yeni bir string oluşturur.
@@ -187,6 +209,8 @@ yeni_metin20 = metin19 + " Dünya"
 print(id(metin19))  # Orijinal stringin id'si
 print(id(yeni_metin20))  # Yeni stringin id'si
 
+#####################################################################################
+#### findall #### ###################################################################
 print("##########################################")
 # 20-) Stringler üzerinde düzenli ifadelerle güçlü arama ve değiştirme işlemleri yapabilirsiniz:
 import re
@@ -196,6 +220,8 @@ pattern = r"\d+"
 sonuc = re.findall(pattern, metin)
 print(sonuc)  # ['101']
 
+#####################################################################################
+#### Formatlama #####################################################################
 # import re: Python'un düzenli ifadeler (regex) ile çalışmasını sağlayan re modülünü içe aktarır.
 # metin = "Python 101 dersi": metin adında bir string değişken tanımlar.
 # pattern = r"\d+":
@@ -244,6 +270,8 @@ print("##########################################")
 metin25 = "Python\tProgramlama"
 print(metin25.expandtabs(50))  # Python    Programlama
 
+#####################################################################################
+#### Harf, Rakam, ###################################################################
 print("##########################################")
 # 26-) isalnum()
 # Stringin sadece harf ve rakam içerip içermediğini kontrol eder.
