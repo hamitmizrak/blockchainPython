@@ -144,9 +144,6 @@ my_blockchain.add_transaction("Mustafa", "Fatih", 2)
 # Blockchainleri ekrana yazdır
 my_blockchain.print_chain()
 
-# Blockchain bütünlük doğrulaması
-print(Fore.YELLOW +"Blokchain geçerli mi? ", my_blockchain.is_chain_valid(), Style.RESET_ALL)
-
 print(Fore.BLUE + "Hamit'in bakiyesi:", my_blockchain.get_balance("Hamit"), Style.RESET_ALL)
 print(Fore.BLUE + "Mehmet'in bakiyesi:", my_blockchain.get_balance("Mehmet"), Style.RESET_ALL)
 print(Fore.BLUE + "Mustafa'in bakiyesi:", my_blockchain.get_balance("Mustafa"), Style.RESET_ALL)
@@ -155,6 +152,10 @@ print(Fore.BLUE + "Fatih'in bakiyesi:", my_blockchain.get_balance("Fatih"), Styl
 # İşlem kuyruğu boş, madencilik yapılacak işlem yok.
 my_blockchain.mine_block();
 
+# Blockchain bütünlük doğrulaması
+print(Fore.YELLOW +"Blokchain geçerli mi? ", my_blockchain.is_chain_valid(), Style.RESET_ALL)
+
 # Blockchain'i JSON olarak dışa aktarma
 print(Fore.MAGENTA + "Blockchain JSON Formatı:")
 print(my_blockchain.export_to_json())
+
