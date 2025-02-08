@@ -747,11 +747,109 @@ Kriptografi, blockchain’in temel güvenlik mekanizmasını oluşturur. **Simet
  🚀
 
 
-## Blockhain
+## Python Class
 ```sh
 
 ```
 ---
+### **`__init__` ve `self` Nedir ve Ne İşe Yarar?**
+
+Python'da **sınıflarla (class) çalışırken** kullanılan en önemli iki kavram **`__init__` metodu ve `self` değişkenidir**. Bunlar **nesne yönelimli programlamanın (OOP - Object-Oriented Programming)** temel taşlarıdır.
+
+---
+
+## **1. `__init__` Metodu Nedir?**
+`__init__`, Python'da **kurucu metot (constructor)** olarak adlandırılır ve bir sınıftan yeni bir nesne oluşturulduğunda **otomatik olarak çağrılan** özel bir metottur.
+
+### **Özellikleri:**
+- Yeni bir nesne (object) **oluşturulduğunda çalışır**.
+- Nesneye ait **başlangıç değerlerini (attributes)** tanımlar.
+- `return` ifadesi kullanılmaz çünkü doğrudan nesneyi başlatır.
+
+### **Örnek:**
+```python
+class Insan:
+    def __init__(self, isim, yas):
+        self.isim = isim  # Nesneye isim özelliği ekler
+        self.yas = yas  # Nesneye yaş özelliği ekler
+
+# Yeni bir nesne oluşturduğumuzda __init__ metodu çalışır
+kisi1 = Insan("Ahmet", 30)
+print(kisi1.isim)  # Çıktı: Ahmet
+print(kisi1.yas)   # Çıktı: 30
+```
+
+Yukarıdaki kodda, **`__init__` metodu** sayesinde her `Insan` nesnesi oluşturulduğunda **isim ve yaş değerleri otomatik olarak atanır**.
+
+---
+
+## **2. `self` Nedir?**
+`self`, bir **sınıf içinde** kullanılan özel bir değişkendir ve **sınıfa ait özelliklere ve metotlara erişmeyi sağlar**.
+
+### **Özellikleri:**
+- `self`, **her nesneye özgü değişkenleri** temsil eder.
+- Sınıfın **içindeki metotlarda, nesnenin kendi verilerine erişmesini sağlar**.
+- Python'da bir sınıf metodu içinde `self` yazılması **zorunludur** (ancak adı değiştirilebilir, yine de Python topluluğu `self` kullanır).
+
+### **Örnek:**
+```python
+class Araba:
+    def __init__(self, marka, model):
+        self.marka = marka  # Arabanın markasını saklar
+        self.model = model  # Arabanın modelini saklar
+
+    def bilgi_goster(self):
+        print(f"Bu araba bir {self.marka} {self.model}")
+
+# Yeni bir nesne oluşturalım
+araba1 = Araba("Toyota", "Corolla")
+araba1.bilgi_goster()  # Çıktı: Bu araba bir Toyota Corolla
+```
+
+Yukarıda:
+- `self.marka = marka` → `self` sayesinde nesneye **marka** özelliği eklenir.
+- `self.model = model` → `self` sayesinde nesneye **model** özelliği eklenir.
+- `bilgi_goster()` metodu içinde `self.marka` ve `self.model` çağrılarak **nesneye özgü veriler** kullanılır.
+
+---
+
+## **Özetle:**
+| Terim | Açıklama |
+|--------|--------------------------------------------|
+| `__init__` | Bir sınıftan nesne oluşturulduğunda **otomatik olarak çağrılan kurucu (constructor) metottur**. Nesnenin başlangıç değerlerini ayarlar. |
+| `self` | **Oluşturulan nesneyi temsil eder**. Sınıf içinde değişken ve metotlara erişmek için kullanılır. |
+
+---
+
+## **Örnek Kullanım:**
+```python
+class Bilgisayar:
+    def __init__(self, marka, ram):
+        self.marka = marka  # Nesneye marka özelliği ekler
+        self.ram = ram  # Nesneye RAM kapasitesi özelliği ekler
+
+    def bilgileri_goster(self):
+        print(f"Bu bilgisayar bir {self.marka} ve {self.ram}GB RAM'e sahip.")
+
+# Yeni nesneler oluşturalım
+bilgisayar1 = Bilgisayar("Dell", 16)
+bilgisayar2 = Bilgisayar("Apple", 8)
+
+bilgisayar1.bilgileri_goster()  # Çıktı: Bu bilgisayar bir Dell ve 16GB RAM'e sahip.
+bilgisayar2.bilgileri_goster()  # Çıktı: Bu bilgisayar bir Apple ve 8GB RAM'e sahip.
+```
+Burada:
+- `self.marka = marka` → Her bilgisayar nesnesine marka bilgisini ekler.
+- `self.ram = ram` → RAM bilgisini ekler.
+- `bilgileri_goster()` → `self` sayesinde **her nesnenin kendi bilgilerini ekrana basmasını sağlar**.
+
+---
+
+## **Sonuç:**
+- `__init__` **nesne oluşturulduğunda çağrılan bir kurucu metottur** ve nesneye başlangıç değerleri atar.
+- `self`, **sınıfın içindeki özellikleri ve metotları nesneye bağlar**, böylece her nesne kendi verilerine sahip olur.
+
+Bu yapı sayesinde **her nesne bağımsız çalışabilir** ve farklı özelliklere sahip olabilir! 🚀
 
 
 
